@@ -21,4 +21,4 @@ my_array = [1, 2, 3, 1, 5]
 duplicate_elements = find_duplicates(my_array)
 
 # In kết quả
-print("Các phần tử trùng lặp là:", duplicate_elements)
+print("Cac phan tu trung lap:", duplicate_elements)
