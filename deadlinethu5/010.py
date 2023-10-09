@@ -63,3 +63,17 @@ class LinkedList:
             print(current.element, end=" --> ")  # In dữ liệu của nút và dấu --> để phân tách
             current = current.next  # Di chuyển đến nút tiếp theo
         print()  # In xuống dòng để kết thúc danh sách liên kết
+L = LinkedList()
+L.add_last(7)
+L.add_last(4)
+L.add_last(12)
+L.add_last(8)
+L.add_last(3)
+L.display()
+print('Size:', len(L))
+L.add_first(15)  
+L.display()
+print('Size:', len(L))
+L.add_first(25)  
+L.display()
+print('Size:', len(L))
