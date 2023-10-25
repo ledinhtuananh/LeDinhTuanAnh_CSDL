@@ -43,6 +43,22 @@ class LinkedList:
             newest.next = self._head  # Cập nhật tham chiếu 'next' của 'newest' đến nút hiện tại đầu danh sách
             self._head = newest       # Đặt 'newest' làm đầu danh sách mới
         self._size += 1              # Tăng kích thước danh sách liên kết lên 1
+    def add_any(self, e, position):  # Sửa tên phương thức thành 'add_any'
+        newest = _Node(e, None)  # Tạo một nút mới 'newest' với dữ liệu 'e' và tham chiếu 'None'
+        p = self._head           # Khởi tạo con trỏ 'p' từ đầu danh sách liên kết
+        i = 1                     # Khởi tạo biến 'i' để theo dõi vị trí trong danh sách
+
+        # Duyệt danh sách đến vị trí trước vị trí cần thêm phần tử (position - 1)
+        while i < position - 1:
+            p = p.next  # Di chuyển con trỏ 'p' đến phần tử tiếp theo trong danh sách
+            i += 1      # Tăng biến 'i' lên 1 để tiếp tục kiểm tra vị trí
+
+        # Cập nhật tham chiếu 'next' của 'newest' và 'p' để thêm 'newest' vào vị trí 'position'
+        newest.next = p.next  # Tham chiếu 'next' của 'newest' trỏ đến phần tử sau 'p' trong danh sách
+        p.next = newest       # Tham chiếu 'next' của 'p' trỏ đến 'newest'
+
+        self._size += 1       # Tăng kích thước danh sách liên kết lên 1 sau khi thêm phần tử
+
 
     # Phương thức tìm kiếm một phần tử trong danh sách liên kết và trả về vị trí nếu tìm thấy, -1 nếu không tìm thấy.
     def search(self, key):
@@ -65,30 +81,23 @@ class LinkedList:
         print()  # In xuống dòng để kết thúc danh sách liên kết
 L = LinkedList()  # Tạo một danh sách liên kết mới, 'L' là một đối tượng của lớp LinkedList.
 
-L.add_last(7) 
-L.add_last(4)  
-L.add_last(12) 
-L.add_last(8)  
-L.add_last(3)  
+L.add_last(7)  # Thêm phần tử có giá trị 7 vào cuối danh sách liên kết.
+L.add_last(4)  # Thêm phần tử có giá trị 4 vào cuối danh sách liên kết.
+L.add_last(12) # Thêm phần tử có giá trị 12 vào cuối danh sách liên kết.
+L.add_last(8)  # Thêm phần tử có giá trị 8 vào cuối danh sách liên kết.
+L.add_last(3)  # Thêm phần tử có giá trị 3 vào cuối danh sách liên kết.
 
-L.display()  # Gọi phương thức 'display' để in danh sách liên kết ra màn hình.
+L.display()  # In ra danh sách liên kết sau khi thêm các phần tử.
 # Kết quả in ra sẽ là: 7 --> 4 --> 12 --> 8 --> 3 -->
 
 print('Size:', len(L))  # In ra kích thước của danh sách liên kết bằng cách sử dụng phương thức '__len__'.
 # Kết quả in ra sẽ là: Size: 5
 
-L.add_first(15)  # Thêm phần tử có giá trị 15 vào đầu danh sách liên kết.
+L.add_any(20, 3)  # Thêm phần tử có giá trị 20 vào vị trí thứ 3 trong danh sách liên kết.
+# Sửa lỗi tên phương thức thành 'add_any'.
 
-L.display()  # In danh sách liên kết sau khi thêm phần tử 15 vào đầu.
-# Kết quả in ra sẽ là: 15 --> 7 --> 4 --> 12 --> 8 --> 3 -->
+L.display()  # In ra danh sách liên kết sau khi thêm phần tử 20.
+# Kết quả in ra sẽ là: 7 --> 4 --> 20 --> 12 --> 8 --> 3 -->
 
 print('Size:', len(L))  # In ra kích thước của danh sách liên kết sau khi thêm phần tử.
 # Kết quả in ra sẽ là: Size: 6
-
-L.add_first(25)  # Thêm phần tử có giá trị 25 vào đầu danh sách liên kết.
-
-L.display()  # In danh sách liên kết sau khi thêm phần tử 255 vào đầu.
-# Kết quả in ra sẽ là: 255 --> 15 --> 7 --> 4 --> 12 --> 8 --> 3 -->
-
-print('Size:', len(L))  # In ra kích thước của danh sách liên kết sau khi thêm phần tử.
-# Kết quả in ra sẽ là: Size: 7
